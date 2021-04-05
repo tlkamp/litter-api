@@ -25,10 +25,10 @@ const (
 // NewClient - Initialize a new Client with provided configuration Config
 func NewClient(cfg *Config) (*Client, error) {
 	client := &Client{
-		apiClient: resty.New(),
+		apiClient:  resty.New(),
 		authClient: resty.New(),
-		Config: cfg,
-		robots: make(map[string]State, 0),
+		Config:     cfg,
+		robots:     make(map[string]State, 0),
 	}
 
 	if cfg.AuthUrl == "" {
@@ -75,7 +75,7 @@ func (c *Client) RefreshToken() {
 	if resp.StatusCode() != http.StatusOK {
 		log.WithFields(log.Fields{
 			"statusCode": resp.StatusCode(),
-			"status": resp.Status(),
+			"status":     resp.Status(),
 		}).Fatal("Failed to refresh access token")
 	}
 
@@ -198,7 +198,7 @@ func (c *Client) sendCommand(robotId string, command string) error {
 	}
 
 	log.WithFields(log.Fields{
-		"command":    command,
+		"command": command,
 		"robotId": robotId,
 	}).Info("Sending command to Litter Robot")
 
@@ -218,8 +218,8 @@ func (c *Client) sendCommand(robotId string, command string) error {
 	if result.StatusCode() != http.StatusOK {
 		log.WithFields(log.Fields{
 			"statusCode": result.StatusCode(),
-			"status": result.Status(),
-			"id": robotId,
+			"status":     result.Status(),
+			"id":         robotId,
 		}).Error("Command request failed")
 		return errors.New(result.Status())
 	}

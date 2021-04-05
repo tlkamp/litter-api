@@ -113,4 +113,3 @@ func init() {
 		statusMap[v] = float64(i)
 	}
 }
-
