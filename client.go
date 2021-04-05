@@ -53,6 +53,7 @@ func NewClient(cfg *Config) (*Client, error) {
 	return client, err
 }
 
+// RefreshToken - Refreshes the access_token granted by the initial client creation.
 func (c *Client) RefreshToken() {
 	loginBody := url.Values{
 		"grant_type":    {"refresh_token"},
@@ -102,6 +103,7 @@ func (c *Client) States() ([]State, error) {
 	return robots, nil
 }
 
+// Insights - return the Litter Robot Insights over the specified number of days.
 func (c *Client) Insights(id string, days, timezoneOffset int) ([]Insight, error) {
 	if days < 1 {
 		days = 1 // litter robot api does not check for zero

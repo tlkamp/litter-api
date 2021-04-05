@@ -47,7 +47,7 @@ func hexToFloat(s string) float64 {
 	return float64(f)
 }
 
-func NewState(r robotResponse) State {
+func newState(r robotResponse) State {
 	s := State{
 		LitterRobotID:             r.LitterRobotID.(string),
 		LitterRobotSerial:         r.LitterRobotSerial.(string),
