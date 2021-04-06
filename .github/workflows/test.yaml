@@ -24,7 +24,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+      - run: npx
       - name: Release Dry Run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx -p @semantic-release/changelog -p @semantic-release/git semantic-release -d
+        run: npx -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release -d
