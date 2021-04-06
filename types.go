@@ -1,8 +1,9 @@
 package api
 
 import (
-	"github.com/go-resty/resty/v2"
 	"time"
+
+	"github.com/go-resty/resty/v2"
 )
 
 type loginResponse struct {

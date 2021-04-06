@@ -4,12 +4,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/dgrijalva/jwt-go"
-	"github.com/go-resty/resty/v2"
-	log "github.com/sirupsen/logrus"
 	"net/http"
 	"net/url"
 	"time"
+
+	"github.com/dgrijalva/jwt-go"
+	"github.com/go-resty/resty/v2"
+	log "github.com/sirupsen/logrus"
 )
 
 const (
@@ -28,7 +29,7 @@ func NewClient(cfg *Config) (*Client, error) {
 		apiClient:  resty.New(),
 		authClient: resty.New(),
 		Config:     cfg,
-		robots:     make(map[string]State, 0),
+		robots:     make(map[string]State),
 	}
 
 	if cfg.AuthUrl == "" {
