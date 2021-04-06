@@ -47,7 +47,8 @@ func hexToFloat(s string) float64 {
 	return float64(f)
 }
 
-func newState(r robotResponse) State {
+// NewState creates a struct to hold the status of the litterbox
+func NewState(r robotResponse) State {
 	s := State{
 		LitterRobotID:             r.LitterRobotID.(string),
 		LitterRobotSerial:         r.LitterRobotSerial.(string),
