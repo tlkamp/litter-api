@@ -27,4 +27,4 @@ jobs:
       - name: Release Dry Run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release -d
+        run: npx -p @semantic-release/changelog -p @semantic-release/git semantic-release -d
