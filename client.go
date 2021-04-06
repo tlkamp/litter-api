@@ -95,7 +95,7 @@ func (c *Client) States() ([]State, error) {
 
 	robots := make([]State, 0)
 	for _, result := range results {
-		s := NewState(result)
+		s := newState(result)
 		robots = append(robots, s)
 		c.robots[s.LitterRobotID] = s
 	}
