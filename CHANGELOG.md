@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/tlkamp/litter-api/compare/v1.0.0...v1.0.1) (2021-04-07)
+
+
+### Bug Fixes
+
+* **login:** handles error parsing token claims ([874bf4e](https://github.com/tlkamp/litter-api/commit/874bf4ea202c95a839abf09006db4fcd39f77c70))
+
 # 1.0.0 (2021-04-06)
 
 
