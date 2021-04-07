@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/tlkamp/litter-api/compare/v1.0.1...v1.0.2) (2021-04-07)
+
+
+### Bug Fixes
+
+* **login:** ignores keyfunc errors since keyfunc is nil ([4a5f6f4](https://github.com/tlkamp/litter-api/commit/4a5f6f4dc49a7983bb7d8bcb914d6e7de794dc82))
+
 ## [1.0.1](https://github.com/tlkamp/litter-api/compare/v1.0.0...v1.0.1) (2021-04-07)
 
 
