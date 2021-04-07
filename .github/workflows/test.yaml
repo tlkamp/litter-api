@@ -1,8 +1,12 @@
 name: Test
-on: [
-  push,
-  pull_request
-]
+on:
+  push:
+    tags-ignore:
+      - '**'
+    branches:
+      - '**'
+  pull_request:
+
 jobs:
   test:
     runs-on: ubuntu-latest
