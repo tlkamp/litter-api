@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"strings"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -159,7 +160,7 @@ func (c *Client) login() error {
 	}
 
 	t, err := jwt.ParseWithClaims(result.Token, &claims{}, nil)
-	if err != nil {
+	if err != nil && !strings.Contains(err.Error(), "Keyfunc") {
 		log.WithField("error", err.Error()).Error("failed to parse token claims")
 		return err
 	}
