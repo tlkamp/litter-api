@@ -158,7 +158,11 @@ func (c *Client) login() error {
 		jwt.StandardClaims
 	}
 
-	t, _ := jwt.ParseWithClaims(result.Token, &claims{}, nil)
+	t, err := jwt.ParseWithClaims(result.Token, &claims{}, nil)
+	if err != nil {
+		log.WithField("error", err.Error()).Error("failed to parse token claims")
+		return err
+	}
 	c.userID = t.Claims.(*claims).UserId
 	c.Expiry = time.Second * time.Duration(result.ExpiresIn)
 	c.refreshToken = result.RefreshToken
