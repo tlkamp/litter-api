@@ -16,7 +16,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Test
-        run: go test -v ./...
+        run: go test -v -cover ./...
+        env:
+          LR_EMAIL: ${{ secrets.LR_EMAIL }}
+          LR_PASSWORD: ${{ secrets.LR_PASSWORD }}
   golangci-lint:
     runs-on: ubuntu-latest
     steps:
