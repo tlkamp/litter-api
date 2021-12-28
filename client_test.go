@@ -17,6 +17,11 @@ func TestClient_Integration(t *testing.T) {
 		t.Fatal("No value for LR_PASSWORD")
 	}
 
+	name, ok := os.LookupEnv("LR_NAME")
+	if !ok {
+		t.Fatal("No value for LR_NAME")
+	}
+
 	lc, err := NewClient(&Config{
 		Email:        email,
 		Password:     password,
@@ -39,7 +44,7 @@ func TestClient_Integration(t *testing.T) {
 		}
 
 		for _, state := range states {
-			if !strings.Contains(state.Name, "magic") {
+			if !strings.Contains(state.Name, name) {
 				t.Fatalf("Robot state has invalid name: %s", state.Name)
 			}
 		}
