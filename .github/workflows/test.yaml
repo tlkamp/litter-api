@@ -20,6 +20,7 @@ jobs:
         env:
           LR_EMAIL: ${{ secrets.LR_EMAIL }}
           LR_PASSWORD: ${{ secrets.LR_PASSWORD }}
+          LR_NAME: "magic"
   golangci-lint:
     runs-on: ubuntu-latest
     steps:
@@ -30,7 +31,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
+        with:
+          node_version: '15'
       - name: Release Dry Run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
