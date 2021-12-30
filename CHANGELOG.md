@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/tlkamp/litter-api/compare/v1.0.2...v1.0.3) (2021-12-30)
+
+
+### Bug Fixes
+
+* fix CVE-2020-26160 by migrating to golang-jwt ([#6](https://github.com/tlkamp/litter-api/issues/6)) ([0a677fd](https://github.com/tlkamp/litter-api/commit/0a677fdfeea1272a442b7752fde4a29a600ccc1e))
+
 ## [1.0.2](https://github.com/tlkamp/litter-api/compare/v1.0.1...v1.0.2) (2021-04-07)
 
 
