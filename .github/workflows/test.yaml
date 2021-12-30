@@ -31,7 +31,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
+        with:
+          node_version: '15'
       - name: Release Dry Run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
