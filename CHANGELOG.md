@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/tlkamp/litter-api/compare/v1.0.3...v1.0.4) (2023-04-16)
+
+
+### Bug Fixes
+
+* update dependencies ([#8](https://github.com/tlkamp/litter-api/issues/8)) ([5d2da95](https://github.com/tlkamp/litter-api/commit/5d2da95a50f4deeb93b215e9c2f26ffee3cb92e4))
+
 ## [1.0.3](https://github.com/tlkamp/litter-api/compare/v1.0.2...v1.0.3) (2021-12-30)
 
 
