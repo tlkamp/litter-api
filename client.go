@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/golang-jwt/jwt"
 	"github.com/go-resty/resty/v2"
+	"github.com/golang-jwt/jwt"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -37,13 +37,13 @@ func NewClient(cfg *Config) (*Client, error) {
 		cfg.AuthUrl = "https://autopets.sso.iothings.site"
 	}
 	client.authClient.SetHeader("x-api-key", cfg.ApiKey)
-	client.authClient.SetHostURL(cfg.AuthUrl)
+	client.authClient.SetBaseURL(cfg.AuthUrl)
 
 	if cfg.ApiUrl == "" {
 		cfg.ApiUrl = "https://v2.api.whisker.iothings.site"
 	}
 
-	client.apiClient.SetHostURL(cfg.ApiUrl)
+	client.apiClient.SetBaseURL(cfg.ApiUrl)
 
 	client.statusPath = "/users/%s/robots"
 	client.insightsPath = client.statusPath + "/%s/insights"
