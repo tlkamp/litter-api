@@ -12,37 +12,28 @@ package main
 
 import (
 	"fmt"
-	. "github.com/tlkamp/litter-api"
-	"log"
+	lr "github.com/tlkamp/litter-api/pkg/client"
 )
 
 func main() {
-	lc, err := NewClient(Config{
-		Email:    "your-email@example.com",
-		Password: "your-password-here",
-		APIKey:   "your-api-key",
-	})
+	api := lr.New("your-email", "your-password")
+
+	ctx := context.Background()
+
+	err := api.Login(ctx)
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Println("Error logging in - ", err)
 	}
 
-	states, err := lc.States()
-	if err != nil {
-		log.Fatalln(err)
+	if err := api.FetchRobots(ctx); err != nil {
+		fmt.Println("Error fetching robots - ", err)
 	}
 
-	for _, state := range states {
-		log.Println(fmt.Sprintf("%+v", state))
+	for _, robot := range api.Robots() {
+		fmt.Println(robot.LitterRobotID, "-", robot.Name)
+		api.Cycle(ctx, robot.LitterRobotID)
 	}
 }
-```
-
-## Logging
-[Logrus] is the logger used in this project. The log level and format can be altered
-accordingly.
-
-```go
-log.SetLevel(log.DebugLevel)
 ```
 
 ## Unit Status
@@ -64,7 +55,6 @@ The unit status is represented by a non-negative integer.
 | SDF        | 11      | Drawer full - will not cycle         |
 | DFS        | 12      | Drawer full - will not cycle         |
 
-[Logrus]: https://github.com/sirupsen/logrus
 [Go Report Badge]: https://goreportcard.com/badge/github.com/tlkamp/litter-api
 [Go Report]: https://goreportcard.com/report/github.com/tlkamp/litter-api
 [GoDocBadge]: https://godoc.org/github.com/tlkamp/litter-api?status.svg

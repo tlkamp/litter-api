@@ -1,4 +1,4 @@
-package api
+package util
 
 import (
 	"math"
@@ -17,7 +17,7 @@ var hexTests = []struct {
 func TestHexToFloat(t *testing.T) {
 	for _, tt := range hexTests {
 		t.Run(tt.in, func(t *testing.T) {
-			got := hexToFloat(tt.in)
+			got := HexToFloat(tt.in)
 			if got != tt.out {
 				t.Errorf("got %f, want %f", got, tt.out)
 			}
@@ -37,7 +37,7 @@ var boolTests = []struct {
 
 func TestGetBool(t *testing.T) {
 	for _, tt := range boolTests {
-		got := getBool(tt.in)
+		got := Bool(tt.in)
 		if got != tt.out {
 			t.Errorf("got %t, want %t", got, tt.out)
 		}
@@ -57,7 +57,7 @@ var floatTests = []struct {
 
 func TestGetFloat(t *testing.T) {
 	for _, tt := range floatTests {
-		got := getFloat(tt.in)
+		got := Float(tt.in)
 
 		// NaN != NaN, so NaN expecting NaN fails without the and check.
 		if got != tt.out && !(math.IsNaN(got) && math.IsNaN(tt.out)) {

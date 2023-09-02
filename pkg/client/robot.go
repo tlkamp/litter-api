@@ -1,15 +1,32 @@
-package api
+package client
 
 import (
-	"time"
-
-	"github.com/go-resty/resty/v2"
+	"github.com/tlkamp/litter-api/internal/util"
 )
 
-type loginResponse struct {
-	Token        string `json:"access_token"`
-	RefreshToken string `json:"refresh_token"`
-	ExpiresIn    int    `json:"expires_in"`
+var status = []string{
+	"RDY",
+	"CCP",
+	"CCC",
+	"CSF",
+	"DF1",
+	"DF2",
+	"CST",
+	"CSI",
+	"BR",
+	"P",
+	"OFF",
+	"SDF",
+	"DFS",
+}
+
+var statusMap map[string]float64
+
+func init() {
+	statusMap = make(map[string]float64, len(status))
+	for i, v := range status {
+		statusMap[v] = float64(i)
+	}
 }
 
 type robotResponse struct {
@@ -38,8 +55,8 @@ type robotResponse struct {
 	UnitStatus                interface{} `json:"unitStatus"`
 }
 
-// State - the exported state of the Litter Robot.
-type State struct {
+// Robot is the exported state of the LitterRobot.
+type Robot struct {
 	CleanCycleWaitTimeMinutes float64
 	CyclesAfterDrawerFull     float64
 	CycleCapacity             float64
@@ -58,59 +75,23 @@ type State struct {
 	UnitStatus                float64
 }
 
-// Insight - represents a Litter Robot Insights response.
-type Insight struct {
-	AverageCycles float64 `json:"averageCycles"`
-	TotalCycles   int     `json:"totalCycles"`
-}
-
-// Config - Configuration for the Litter Robot client
-type Config struct {
-	ApiUrl       string
-	AuthUrl      string
-	ClientId     string
-	ClientSecret string
-	Email        string
-	Password     string
-	ApiKey       string
-}
-
-// Client - The Client for interacting with the Litter Robot API.
-type Client struct {
-	*Config
-	Expiry       time.Duration
-	apiClient    *resty.Client
-	authClient   *resty.Client
-	token        string
-	refreshToken string
-	userID       string
-	robots       map[string]State
-	statusPath   string
-	insightsPath string
-	cmdPath      string
-}
-
-var status = []string{
-	"RDY",
-	"CCP",
-	"CCC",
-	"CSF",
-	"DF1",
-	"DF2",
-	"CST",
-	"CSI",
-	"BR",
-	"P",
-	"OFF",
-	"SDF",
-	"DFS",
-}
-
-var statusMap map[string]float64
-
-func init() {
-	statusMap = make(map[string]float64, len(status))
-	for i, v := range status {
-		statusMap[v] = float64(i)
+func newRobot(r robotResponse) Robot {
+	s := Robot{
+		LitterRobotID:             r.LitterRobotID.(string),
+		LitterRobotSerial:         r.LitterRobotSerial.(string),
+		Name:                      r.LitterRobotNickname.(string),
+		PowerStatus:               r.PowerStatus.(string),
+		UnitStatus:                statusMap[r.UnitStatus.(string)],
+		CycleCount:                util.Float(r.CycleCount),
+		CycleCapacity:             util.Float(r.CycleCapacity),
+		CyclesUntilFull:           util.Float(r.CyclesUntilFull),
+		CyclesAfterDrawerFull:     util.Float(r.CyclesAfterDrawerFull),
+		DFICycleCount:             util.Float(r.DFICycleCount),
+		CleanCycleWaitTimeMinutes: util.HexToFloat(r.CleanCycleWaitTimeMinutes.(string)),
+		PanelLockActive:           util.Bool(r.PanelLockActive),
+		NightLightActive:          util.Bool(r.NightLightActive),
+		SleepModeActive:           util.Bool(r.SleepModeActive),
+		DFITriggered:              util.Bool(r.IsDFITriggered),
 	}
+	return s
 }
