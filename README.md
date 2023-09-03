@@ -12,7 +12,7 @@ package main
 
 import (
 	"fmt"
-	lr "github.com/tlkamp/litter-api/pkg/client"
+	lr "github.com/tlkamp/litter-api/v2/pkg/client"
 )
 
 func main() {
