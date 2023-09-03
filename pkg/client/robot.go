@@ -1,7 +1,7 @@
 package client
 
 import (
-	"github.com/tlkamp/litter-api/internal/util"
+	"github.com/tlkamp/litter-api/v2/internal/util"
 )
 
 var status = []string{

@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"sync"
 
-	"github.com/tlkamp/litter-api/internal/auth"
+	"github.com/tlkamp/litter-api/v2/internal/auth"
 
 	"github.com/pkg/errors"
 )
