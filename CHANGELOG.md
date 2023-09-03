@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/tlkamp/litter-api/compare/v1.0.4...v2.0.0) (2023-09-03)
+
+
+### Code Refactoring
+
+* refactor entire project ([#11](https://github.com/tlkamp/litter-api/issues/11)) ([ba41cb2](https://github.com/tlkamp/litter-api/commit/ba41cb27b24f172e2604c1b363f83a626fa31e58)), closes [#9](https://github.com/tlkamp/litter-api/issues/9)
+
+
+### BREAKING CHANGES
+
+* the entire project has be rewritten
+
 ## [1.0.4](https://github.com/tlkamp/litter-api/compare/v1.0.3...v1.0.4) (2023-04-16)
 
 
