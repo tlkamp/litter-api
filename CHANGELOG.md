@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/tlkamp/litter-api/compare/v2.0.0...v2.0.1) (2023-09-03)
+
+
+### Bug Fixes
+
+* fix go module ([#12](https://github.com/tlkamp/litter-api/issues/12)) ([f08750a](https://github.com/tlkamp/litter-api/commit/f08750af209d572f5bd59502f9d081a77e3a48b1))
+
 # [2.0.0](https://github.com/tlkamp/litter-api/compare/v1.0.4...v2.0.0) (2023-09-03)
 
 
