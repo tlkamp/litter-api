@@ -1,4 +1,4 @@
-module github.com/tlkamp/litter-api
+module github.com/tlkamp/litter-api/v2
 
 go 1.18
 
