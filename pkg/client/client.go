@@ -50,6 +50,11 @@ func (c *Client) RefreshToken(ctx context.Context) error {
 	return c.auth.DoRefreshToken(ctx)
 }
 
+// Token returns the token obtained after the oauth flow completes.
+func (c *Client) Token() string {
+	return c.auth.IDToken()
+}
+
 // FetchRobots fetches the robots from the LitterRobot API.
 // The robots are cached on the client and can be fetched without additional network calls using Robots() or Robot(id)
 func (c *Client) FetchRobots(ctx context.Context) error {
