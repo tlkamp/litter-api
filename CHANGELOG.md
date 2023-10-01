@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/tlkamp/litter-api/compare/v2.0.2...v2.1.0) (2023-10-01)
+
+
+### Features
+
+* **client:** add Token function ([#14](https://github.com/tlkamp/litter-api/issues/14)) ([efc4f41](https://github.com/tlkamp/litter-api/commit/efc4f4169ec09c276a6a757711dd47675a912c64))
+
 ## [2.0.2](https://github.com/tlkamp/litter-api/compare/v2.0.1...v2.0.2) (2023-09-03)
 
 
