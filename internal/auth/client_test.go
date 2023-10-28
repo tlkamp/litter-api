@@ -9,6 +9,10 @@ import (
 )
 
 func TestAuth(t *testing.T) {
+	if testing.Short() {
+		t.Skip("Skipping integration test")
+	}
+
 	a := assert.New(t)
 
 	email := os.Getenv("LR_EMAIL")
@@ -29,4 +33,12 @@ func TestAuth(t *testing.T) {
 		a.NoError(c.Login(ctx))
 		a.NoError(c.DoRefreshToken(ctx))
 	})
+}
+
+func TestSetToken(t *testing.T) {
+	c := New("", "")
+	assert.Empty(t, c.IDToken())
+
+	c.SetToken("notreal")
+	assert.Equal(t, "notreal", c.IDToken())
 }

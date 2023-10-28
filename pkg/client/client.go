@@ -55,6 +55,10 @@ func (c *Client) Token() string {
 	return c.auth.IDToken()
 }
 
+func (c *Client) SetToken(token string) {
+	c.auth.SetToken(token)
+}
+
 // FetchRobots fetches the robots from the LitterRobot API.
 // The robots are cached on the client and can be fetched without additional network calls using Robots() or Robot(id)
 func (c *Client) FetchRobots(ctx context.Context) error {

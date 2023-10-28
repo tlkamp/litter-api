@@ -9,6 +9,10 @@ import (
 )
 
 func TestClient(t *testing.T) {
+	if testing.Short() {
+		t.Skip("Skipping integration test")
+	}
+
 	a := assert.New(t)
 	email := os.Getenv("LR_EMAIL")
 	password := os.Getenv("LR_PASSWORD")
@@ -31,4 +35,10 @@ func TestClient(t *testing.T) {
 	a.Greater(len(in.CycleHistory), 0)
 
 	a.NoError(c.Cycle(ctx, id))
+}
+
+func TestSetToken(t *testing.T) {
+	c := New("", "")
+	c.SetToken("testing")
+	assert.Equal(t, "testing", c.Token())
 }

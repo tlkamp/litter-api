@@ -113,6 +113,13 @@ func (c *Client) IDToken() string {
 	return c.idToken
 }
 
+// SetToken sets the ID Token to use for the Oauth flow.
+func (c *Client) SetToken(t string) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	c.idToken = t
+}
+
 // RefreshToken returns the refresh token obtained from the Oauth flow.
 func (c *Client) refreshToken() string {
 	c.mutex.RLock()
