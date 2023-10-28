@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/tlkamp/litter-api/compare/v2.2.0...v2.3.0) (2023-10-28)
+
+
+### Features
+
+* **robot:** implement stringer interface ([b07ad66](https://github.com/tlkamp/litter-api/commit/b07ad66e5aad1eb837309258b32169bf6c775de2))
+
 # [2.2.0](https://github.com/tlkamp/litter-api/compare/v2.1.0...v2.2.0) (2023-10-28)
 
 
