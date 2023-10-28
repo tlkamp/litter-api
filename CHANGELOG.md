@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/tlkamp/litter-api/compare/v2.1.0...v2.2.0) (2023-10-28)
+
+
+### Features
+
+* **auth:** allow the auth token to be set ([de19955](https://github.com/tlkamp/litter-api/commit/de19955709738668fa4bc322717eab40334c8b34))
+
 # [2.1.0](https://github.com/tlkamp/litter-api/compare/v2.0.2...v2.1.0) (2023-10-01)
 
 
