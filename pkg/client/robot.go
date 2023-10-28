@@ -1,6 +1,8 @@
 package client
 
 import (
+	"fmt"
+
 	"github.com/tlkamp/litter-api/v2/internal/util"
 )
 
@@ -73,6 +75,10 @@ type Robot struct {
 	PowerStatus               string
 	SleepModeActive           bool
 	UnitStatus                float64
+}
+
+func (r Robot) String() string {
+	return fmt.Sprintf("%s - %s", r.Name, r.LitterRobotID)
 }
 
 func newRobot(r robotResponse) Robot {
